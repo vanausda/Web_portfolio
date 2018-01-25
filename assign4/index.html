@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+<meta charset="utf-8"> 
+<title>Assignment 4</title>
+	<style>
+	
+	.filter {
+	
+		width: 150px;
+		height: 300px;
+		margin-left: 10px;
+		outline-color: #808b96;
+		outline-style: solid;
+		
+		background: repeating-linear-gradient( to right, 
+		#f9ebea,
+		#f9ebea 5px,
+		#808b96 5px,
+		#808b96 10px );
+		
+		opacity: 0;
+		
+		animation-name: filter_appear;
+		animation-duration: 6s;
+		animation-delay: 3s;
+		animation-fill-mode: forwards;
+		animation-iteration-count: 1;
+	}
+	
+	.filter_body {
+
+		width: 200px;
+		height: 350px;
+		background: brown;
+		margin-left: 200px;
+
+	}
+	
+	.filter_top {	
+
+		border-bottom: 50px solid tan;
+		border-left: 25px solid transparent;
+		border-right: 25px solid transparent;
+		height: 0;
+		width: 150px;
+		margin-top: 50px;
+		margin-left: 200px;
+		animation: 	remove_lid 9s 1;
+		animation-timing-function: ease-in;
+		animation-fill-mode: forwards;
+			
+	}
+
+	body {
+		margin: 0;
+		height: 100%;
+		background-color: green;
+		
+	}
+	
+#water {
+		
+		width: 0;
+		height: 0;
+		border-top: 100px solid transparent;
+		border-right: 380px solid #d6eaf8;
+		border-bottom: 100px solid transparent;
+		opacity: 0;
+		animation: water_appear 0.2s 10;
+		animation-delay: 3.5s;
+		
+}
+
+#big_div {
+
+	background-color: #efecdf;
+}
+
+
+#intro:after {
+
+	content: "How to change a pool filter!";
+	font-family: Helvetica;
+	font-size: 32px;
+	text-align: center;
+	animation-name: story_line;
+	animation-duration:	10s;
+	animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+	
+@keyframes remove_lid {
+    0% { transform: translate3d(0px, 0px, 0px); }
+		
+	12% { transform: translate3d(-100px, -50px, 0px); }
+
+	30% { transform: translate3d(-200px, 350px, 0px); }
+	
+	32% { transform: translate3d(-200px, 320px, 0px); }
+	
+    34% { transform: translate3d(-200px, 350px, 0px); }
+		
+	70% { transform: translate3d(-200px, 350px, 0px); }
+
+	90% { transform: translate3d(-100px, -50px, 0px);
+        animation-timing-function: ease-in;
+    }
+	
+	100% { transform: translate3d(0px, 0px, 0px); }
+}
+
+@keyframes water_appear {
+
+	0% { opacity: 0; }
+	
+	50% { opacity: 0.5;}
+
+	100% { opacity: 1; }
+
+
+}
+
+@keyframes filter_appear {
+
+	0% { opacity: 0; }
+	
+	15% { opacity: 1;}
+
+	
+	45% { 
+		opacity: 0.25;
+		transform: translate3d(0px, 0px, 0px);
+	}
+		
+	75% { 
+		opacity: 0.25; 
+		transform: translate3d(300px, -350px, 0px);
+		}
+		
+	90% {opacity: 0;
+		transform: translate3d(400px, 0px, 0px);
+	}
+
+	100 { 
+		opacity: 0; 
+		transform: translate3d(400px, 0px, 0px);
+	}
+}
+
+@keyframes story_line {
+
+	32% { content: "Remove lid";	}
+	
+	45% { content: "Remove filter and spray with water"; }
+	
+	75% { content: "Replace filter and lid"; }
+
+	100% { content: "Enjoy your pool!" }
+}
+
+
+</style>
+</head>
+ 
+<body>
+
+<div id="big_div" > 
+<a href="https://vanausda.github.io/Web_portfolio/">Return to portfolio</a>
+<table id="table">
+<tr><th></th><th ></th><th><h2 id="intro"></h2></th></tr>
+<tr>
+<td></td>
+<td></td>
+<td><div id="myTop" class="filter_top"></div></td>
+
+<tr>
+<td><canvas id="hoseCanvas" width="50" height="100"> </canvas><div id="water"></div></td>
+<td><div id="the_filter" class="filter" ></td><td><div id="myFilter" class="filter_body" ></div></td>
+
+</tr>
+</table>
+</div><div><canvas id="myCanvas" width="1500" height="100"> </canvas></div>
+<script>
+var can = document.getElementById("myCanvas");
+var contx = can.getContext("2d");
+
+contx.beginPath();
+contx.moveTo(350,0);
+contx.bezierCurveTo(350,50,800,50,800,20);
+contx.bezierCurveTo(850,10,1000,50,1000,60);
+contx.bezierCurveTo(1100,80,1200,50,1200,0);
+contx.stroke();
+contx.lineWidth = 1;
+contx.fillStyle = '#1ef5f8';
+contx.fill();
+
+
+var can2 = document.getElementById("hoseCanvas");
+var hoseContx = can2.getContext("2d");
+
+hoseContx.beginPath();
+hoseContx.moveTo(0, 0);
+hoseContx.lineTo(0,200);
+hoseContx.stroke();
+hoseContx.lineWidth = 7;
+
+
+</script>
+</body>
+</html>
