@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head> <meta charset="utf-8"/>
+<script src="Statistics.js"></script> 
+<title> Statistics Application</title>
+
+
+<style>
+body {
+
+    background-color: lightblue;
+}
+
+h1,h2,h3 {
+    font-family: arial body;
+    text-align: center;
+}
+
+p {
+    font-family: arial body;
+    font-size: 18px;
+}
+
+
+#div1 {
+    display: block;
+    text-align: center;
+
+}
+
+#answers {
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#form
+{
+    font-family: arial body;
+    font-size: 20px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+</style>
+
+</head>
+<body>
+
+
+
+<h1>Basic Number Calculations</h1>
+
+
+<div id="div1">
+	<form id="form" method="post" onsubmit="return parseIt();">
+	<p>Please place all values into the provided space below using "," in between each entry.</p>
+		<input id="user_input" type="text" size="100" required> </input><br>
+		<input type="submit" value="Press to calculate"/>
+		<input type="reset" value="Reset" onclick="rset()">
+		
+
+	</form>
+
+</div>
+
+
+<div id="answers">
+
+<h2 id="ans" ></h2>
+<p id="total"></p>
+<p id="sum"></p>
+<p id="mean"></p>
+<p id="median"></p>
+<p id="mode"></p>
+<p id="varnc"></p>
+<p id="stnddev"></p>
+</div>
+
+<h3 id="h03"><a href="http://139.62.210.151/~n01397459/cop4813/index.html">Return to portfolio</a></br></br>
+</body>
+</html>
