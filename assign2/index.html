@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!-- Susan Van Ausdall Assignment 2 -->
+<html>
+<head > <meta charset="utf-8"/>
+<script type="text/JavaScript">
+
+function select_interest() {
+
+	var x = document.getElementById("div1");
+	x.hidden= false;
+
+	if (document.getElementById('none').checked) {
+	  
+		document.getElementById('legend').firstChild.nodeValue = 'Select areas of interest';
+	}
+	return true;
+}
+
+function check_submit() {	
+
+	var zip = document.getElementById("zipCode");
+	var state = document.getElementById("choose_state");
+	var warning = document.getElementById("try_again");
+	var monitor = document.getElementById("try_again");
+	var my_city = document.getElementById("city");
+	var zip_result = isNumeric(zip);
+	var f_name = document.getElementById("firstName").value;
+	var l_name = document.getElementById("lastName").value;
+	var output;
+	
+	// clear out previous warning
+	if (warning.hasChildNodes()) {
+		warning.removeChild(warning.lastChild);
+	}
+	
+	// clear out previous warning
+	if (monitor.hasChildNodes()) {
+		monitor.removeChild(monitor.lastChild);
+	}
+	
+	if (zip_result != "1" || zip.value.length != "5"){
+		output = document.createTextNode("Numbers only");
+		warning.appendChild(output);
+		document.body.appendChild(warning);
+	}
+		
+	else if ( state.value == "choose") {
+		output = document.createTextNode("Please select state");
+		warning.appendChild(output);
+		document.body.appendChild(warning);
+		
+	}
+	else if (notAlpha(my_city)) {
+		output = document.createTextNode("Please use letters only");
+		warning.appendChild(output);
+		document.body.appendChild(warning);
+	}
+	
+	else if (experience_field.value < "1" || experience_field.value > "3") {
+		warning.value = "Please choose your experience level";
+		warning.appendChild(warning);
+		document.body.appendChild(warning);
+	}
+	
+	else {
+				
+		div1.hidden = true;
+		
+		if (experience_field.value = "1") {
+		
+			output = document.createTextNode("Thank you " + f_name + " " + l_name + 
+			" for your interest. We will get back to you shortly.");
+			monitor.appendChild(output);
+			document.body.appendChild(monitor);
+			
+		}
+		else {
+			output = document.createTextNode("Thank you " + f_name + " " + l_name + ". We are so lucky to have an experienced volunteer!");
+			monitor.appendChild(output);
+			document.body.appendChild(monitor);
+			
+		}
+	}
+	return false;
+ }
+
+ function rset() {
+ 
+	var warning = document.getElementById("try_again");
+	var monitor = document.getElementById("final_output");
+	var div1 = document.getElementById("div1");
+	
+	div1.hidden = true;
+	
+	while (warning.hasChildNodes()) {
+		warning.removeChild(warning.lastChild);
+ 	}
+	
+	while (monitor.hasChildNodes()) {
+		monitor.removeChild(monitor.lastChild);
+	}
+	document.getElementById("my_form").reset();
+ }
+
+
+function isNumeric(input){
+	var numericExpression = /^[0-9]+$/;
+	if(input.value.match(numericExpression)){
+		return true;
+	}else{
+		input.focus();
+		return false;
+	}
+}
+
+function notAlpha(input){
+	var token = /^[a-zA-Z]+$/;
+	if(input.value.match(token)){
+		return true;
+	}else{
+		input.focus();
+		return false;
+	}
+}
+
+
+</script>
+
+<style>
+
+body {
+
+    background-color: lightblue;
+}
+
+h1,h2 {
+    font-family: arial body;
+    text-align: center;
+}
+
+p {
+    font-family: arial body;
+    font-size: 18px;
+}
+
+div.form {
+    display: block;
+    text-align: center;
+ }
+
+form
+{
+    font-family: arial body;
+    font-size: 18px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+#try_again {
+	text-align: center;
+	font-size = 25;
+	color: red;
+}
+	
+</style>
+</head>
+<body>
+
+<h1>Volunteer Application</h1>
+<h2 id="welcome" >Welcome to Disaster Volunteer Group's Volunteer Application<br>
+Please fill the form out entirely. We will contact you shortly.</h2>
+
+<div class="form"> 
+<form id="my_form" method="post" onsubmit="return check_submit();">
+  <fieldset>
+    <legend>Personal information:</legend>
+	  
+  First name:
+  <input id="firstName" type="text" name="fname" size="30" required/>
+  Last name:
+  <input id="lastName" type="text" name="lname" size="30" required/>
+<br>
+<br>
+  Street Address:
+  <input type="text" name="street" size="42" required/>
+  City: <input id="city" type="text" name="city" required/><br><br>
+  State: 
+ 	<select id="choose_state" name="states">
+  	<option value="choose">Choose One</option>
+  	<option value="alabama">AL</option>
+  	<option value="alaska">AK</option>
+  	<option value="arizona">AZ</option>
+  	<option value="arkansas">AR</option>
+  	<option value="california">CA</option>
+  	<option value="colorado">CO</option>
+  	<option value="connecticut">CT</option>
+  	<option value="delaware">DE</option>
+  	<option value="florida">FL</option>
+  	<option value="georgia">GA</option>
+  	<option value="hawaii">HI</option>
+  	<option value="idaho">ID</option>
+  	<option value="illinois">IL</option>
+  	<option value="indiana">IN</option>
+  	<option value="iowa">IA</option>
+  	<option value="kansas">KS</option>
+  	<option value="kentucky">KY</option>
+  	<option value="louisiana">LA</option>
+  	<option value="maine">ME</option>
+  	<option value="maryland">MD</option>
+  	<option value="massachusettes">MA</option>
+  	<option value="michigan">MI</option>
+  	<option value="minnesota">MN</option>
+  	<option value="mississippi">MS</option>
+  	<option value="missouri">MO</option>
+  	<option value="montana">MT</option>
+  	<option value="nebraska">NE</option>
+  	<option value="nevada">NV</option>
+  	<option value="new_hampshire">NH</option>
+  	<option value="new_jersey">NJ</option>
+  	<option value="new_mexico">NM</option>
+    <option value="new_york">NY</option>
+  	<option value="north_carolina">NC</option>
+  	<option value="north_dakota">ND</option>
+  	<option value="ohio">OH</option>
+  	<option value="oklahoma">OK</option>
+  	<option value="oregon">OR</option>
+  	<option value="pennsylvania">PA</option>
+  	<option value="rhode_island">RI</option>
+  	<option value="south_carolina">SC</option>
+  	<option value="south_dakota">SD</option>
+  	<option value="tennessee">TN</option>
+  	<option value="texas">TX</option>
+  	<option value="utah">UT</option>
+  	<option value="vermont">VT</option>
+  	<option value="virginia">VA</option>
+  	<option value="washington">WA</option>
+  	<option value="west_virginia">WV</option>
+  	<option value="wisconsin">WI</option>
+  	<option value="wyoming">WY</option>
+  	<option value="washington_dc">DC</option>
+  	<option value="puerto_rico">PR</option>
+    </select> 	
+  Zip Code:
+  <input id="zipCode" type="text" name="zip" maxlength="5" size="10" required/>
+
+  
+  
+ </fieldset>
+
+<p id="try_again"></p>
+
+  <!--  <fieldset id="experience_section"-->
+   <fieldset id="experience_field">
+    <legend>Disaster volunteer experience:</legend>
+  	<input id="none" type="radio" name="status" value="1" > No Experience<br>
+  	<input id="some" type="radio" name="status" value="2"> Some Experience<br>
+  	<input id="lots" type="radio" name="status" value="3"> Very Experienced<br>
+	<input type="button" id="button1" value="Select" onclick="select_interest()"/>
+  </fieldset>
+
+<div id="div1" hidden>
+  <fieldset id="disaster_type" id="field">
+    <legend id="legend">Select area of experience</legend>	
+    <p>Select all that apply</p>
+    <input type="checkbox" name="Flood" value="Flood"> Flood <br>
+    <input type="checkbox" name="Drought" value="Drought"> Drought <br>
+    <input type="checkbox" name="Wind" value="Wind" > Wind <br>
+    <input type="checkbox" name="Wildfire" value="Wildfire" > Wildfire <br>
+    <input type="checkbox" name="Earthquake" value="Earthquake" > Earthquake <br>
+    <input type="checkbox" name="Tsunami" value="Tsunami" > Tsumani <br>
+    <input type="checkbox" name="Landslide" value="Landslide" > Landslide <br>
+    <input type="checkbox" name="Avalanche" value="Avalanche" > Avalanche <br>
+  </fieldset>
+</div>
+<br>  
+  <input type="submit"/>
+  <input type="reset" value="Reset" onclick="rset()">
+  
+ 
+</form>
+</div>
+
+
+
+</body>
+
+</html>
